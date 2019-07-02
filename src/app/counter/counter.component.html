@@ -1,23 +1,25 @@
-<section class="container-fluid text-center">
-  <h2 class="display-3">Contador: {{ counter }}</h2>
-  <button class="btn btn-success border border-light" (click)="incrementCounter()">+++</button>
-  <button class="btn btn-danger border border-light" (click)="decrementCounter()">---</button>
-  <button class="btn btn-dark border border-dark" (click)="resetCounter()">Resetar</button>
+<section class="d-flex flex-column align-items-center justify-content-center app-container">
+  <h2 class="display-3">{{ counter }}</h2>
+  <div class="d-flex align-items-center justify-content-center">
+    <button class="btn btn-danger border border-light" (click)="decrementCounter()">---</button>
+    <button class="btn btn-light border border-light" (click)="resetCounter()">Resetar</button>
+    <button class="btn btn-success border border-light" (click)="incrementCounter()">+++</button>
+  </div>
 
   <section *ngIf="counter == 0">
     <p>O contador é zero.</p>
   </section>
 
   <section *ngIf="counter > 0">
-    <p [ngClass]="{'green-counter': counter >= 10}">O contador é maior que zero.</p>
+    <p [ngClass]="{'green-counter': counter >= 3}">O contador é maior que zero.</p>
   </section>
 
   <section *ngIf="counter < 0">
     <p [ngStyle]="
       {
-        'color': counter < -10 ? 'red' : 'black',
-        'font-weight': counter < -10 ? 'bold' : 'normal',
-        'font-size': counter < -10 ? '20px' : '16px'
+        'color': counter <= -3 ? 'red' : 'inherit',
+        'font-weight': counter <= -3 ? 'bold' : 'inherit',
+        'font-size': counter <= -3 ? '20px' : 'inherit'
       }
     ">O contador é menor que zero.</p>
   </section>
